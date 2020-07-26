@@ -1,0 +1,264 @@
+body{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#821267+0,9e3485+100 */
+
+}
+.login-form {
+    text-align: center;
+    width: 80%;
+    margin: 60px auto;
+  }
+  
+  input[type=email], input[type=password], input[type=text] {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    outline: none;
+    height: 100%;
+    padding-top: 15px;
+    padding-bottom: 16px;
+  }
+  .conteinerdiv{
+      
+  }
+  .name,.pass{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    line-height: normal;
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 17px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: auto;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: black;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    border-color: whitesmoke;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 36px;
+    padding: 4px 12px;
+    width: 100%;
+    
+    display: block;
+
+  }
+  .forgot-password {
+    display: block;
+    margin: 8px auto 0 auto;
+    font-size: 14px;
+     
+  }
+  .button--large--cta1 {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    line-height: normal;
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: auto;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    letter-spacing: 0;
+    background-color:#ED1B24;
+    vertical-align: middle;
+    -webkit-border-radius: 3px;
+    border-right: solid 1px white;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 36px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    
+    
+    
+  }
+  .button--large--cta2 {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    line-height: normal;
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: auto;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    letter-spacing: 0;
+    background-color:#fff;
+    color: #ED1B24;
+    vertical-align: middle;
+    -webkit-border-radius: 3px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    border: none;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 36px;
+    width: 100%;
+    text-align: right;
+    display: block;
+    
+
+    
+  }
+
+  .button--large--cta3 {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    line-height: normal;
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 17px;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: auto;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    letter-spacing: 0;
+    background-color:#5169A5;
+    vertical-align: middle;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 36px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    
+    
+  }
+  .button--large--cta:hover {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  .button--large--cta:focus {
+    outline: 0;
+  }
+  .button--large--cta:active {
+    color: #bbb;
+    background-color: #bbb;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+    opacity: 0.2;
+  }
+  .button--large--cta:disabled,
+  .button--large--cta[disabled] {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+  }

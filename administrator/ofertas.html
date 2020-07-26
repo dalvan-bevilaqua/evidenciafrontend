@@ -1,0 +1,222 @@
+<div class="ibox mb-2">
+    <form name="form">
+        <div class="ibox-head">
+            <div class="ibox-title">Cadastro de Ofertas</div>
+                <div class="ibox-tools">
+                    <button class="btn btn-secondary" ng-click="clearCode()" >Novo</button>
+                    <button class="btn btn-primary mr-2" type="submit" ng-click="salvarOferta()" >Salvar Oferta</button>
+                    
+            </div>
+        </div>
+
+        <div class="ibox-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-sm-1 form-group mb-2">
+                            <label>Id</label>
+                            <input class="form-control"  ng-model="idOferta" type="text" placeholder="0" disabled>
+                        </div>
+                        <div class="col-sm-4 form-group mb-2">
+                            <label>Descrição da Oferta</label>
+                            <input class="form-control"  ng-model="descricaoOferta" type="text" placeholder="Descrição">
+                        </div>
+                        <div class="col-sm-2 form-group">
+                            <label>Data Inicio</label>
+                            <input class="form-control" id="ex-date" ng-model="dataInicialOferta" type="text" placeholder="00/00/0000">
+                        </div>
+                        <div class="col-sm-2 form-group">
+                            <label>Data Término</label>
+                            <input class="form-control" id="ex-date" ng-model="dataTerminoOferta" type="text" placeholder="00/00/0000">
+                        </div>
+                        <div class="col-sm-2 form-group">
+                            <label>Operação</label>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#new-mail-modal" href="javascript:;" >Adicionar Produtos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="ibox">
+    <div class="row">  
+        <div class="col-xl-6">
+            <div class="ibox-body">
+                <ul class="nav nav-tabs tabs-line tabs-line-pink">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#!/ofertas#tab-5-1" data-toggle="tab">Ativas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/ofertas#tab-5-2" data-toggle="tab">Inativas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!/ofertas#tab-5-3" data-toggle="tab">Vencidas</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active text-center" id="tab-5-1">
+                        <table class="table table-head mb-5">
+                            <thead>
+                                <tr>
+                                    <th>Buscar</th>
+                                    <th>Id</th>
+                                    <th>Descrição</th>
+                                    <th>Data de Início</th>
+                                    <th>Data de Término</th>
+                                    <th>Editar</th>
+                                    <th>Deletar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ofertas in ofertas">
+                                    <td>
+                                        <div class="form-ic-cmp">
+                                            <a class="text-muted font-16" href="javascript:;" ng-click="selecionar(values.id,values.name,values.codbar,values.valorvenda,values.qtd,values.img)"> <i class="ti-search"></i></span></a>
+                                        </div>
+                                    </td>
+                                    <td>{{ofertas.id}}</td>
+                                    <td>{{ofertas.descricao}}</td>
+                                    <td>{{ofertas.dtinicial}}</td>
+                                    <td>{{ofertas.dtfinal}}</td>
+                                    
+                                    <td>
+                                        <div class="form-ic-cmp">
+                                            <a class="text-muted font-16" href="javascript:;" ng-click="edit(values.id,values.name,values.codbar,values.valorvenda,values.qtd,values.img)"> <i class="ti-reload"></i></span></a>
+                                        </div>
+                                        </td>
+                                    <td>
+                                        <div class="form-ic-cmp">
+                                            <a class="text-muted font-16" href="javascript:;" ng-click="delete(values.id)"><i class="ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade text-center" id="tab-5-2">
+                        <div class="h1 mt-5 mb-3">Inativas</div>
+                        <p class="mb-5">Laborum dolore consectetur occaecat in ex sunt et dolore dolore aliqua aute qui cupidatat et ullamco in pariatur dolor quis laboris ut.</p>
+                    </div>
+                    <div class="tab-pane fade text-center" id="tab-5-3">
+                        <div class="h1 mt-5 mb-3">Vencidas</div>
+                        <p class="mb-5">Laborum dolore consectetur occaecat in ex sunt et dolore dolore aliqua aute qui cupidatat et ullamco in pariatur dolor quis laboris ut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="ibox-body">
+                <ul class="nav nav-tabs tabs-line tabs-line-pink">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab">Produtos da Oferta Selecionada</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active text-center" id="tab-5-4">
+                        <table class="table table-head mb-5">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>imágem</th>
+                                    <th>Produto</th>
+                                    <th>Valor Normal</th>
+                                    <th>Valor Oferta</th>
+                                    <th>Editar</th>
+                                    <th>Deletar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="values in product">
+                                    <td>{{values.id}}</td>
+                                    <td>
+                                    <div ng-if="values.img != ''">
+                                        <img src="http://blog-kipedido-com.umbler.net/public/{{values.img}}" width="50" height="50" >
+                                    </div>
+                                    <div ng-if="values.img == ''">
+                                        <img src="http://placehold.it/250x175" width="50" height="50" >
+                                    </div> 
+                                    </td>
+                                    <td>{{values.name}}</td>
+                                    <td>{{values.valorvenda}}</td>
+                                    <td>{{values.valoroferta}}</td>
+                                    <td>
+                                        <div class="form-ic-cmp">
+                                            <a class="text-muted font-16" href="javascript:;" ng-click="edit(values.id,values.name,values.codbar,values.valorvenda,values.qtd,values.img)"> <i class="ti-reload"></i></span></a>
+                                        </div>
+                                        </td>
+                                    <td>
+                                        <div class="form-ic-cmp">
+                                            <a class="text-muted font-16" href="javascript:;" ng-click="delete(values.id)"><i class="ti-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+<div class="modal fade" id="new-mail-modal">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content">
+            <div class="modal-header p-4">
+                <h5 class="modal-title">Selecionar Produtos</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            
+            
+            <div class="modal-body p-4">
+                <div class="form-group">    
+                        <div class="input-group-icon input-group-icon-left">
+                            <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
+                            <input class="form-control form-control-rounded" id="key-search" type="text" ng-model="buscarmodal" placeholder="Buscar product ...">
+                        </div>
+                    </div>
+                <div class="form-group mb-4">
+                    <table class="table table-head mb-5">
+                        <thead>
+                            <tr>
+                                <th>imágem</th>
+                                <th>Produto</th>
+                                <th>Valor Normal</th>
+                                <th>Valor Oferta</th>
+                                <th>Adicionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="values in product | filter:buscarmodal">
+                                <td>
+                                <div ng-if="values.img != ''">
+                                    <img src="http://blog-kipedido-com.umbler.net/public/{{values.img}}" width="50" height="50" >
+                                </div>
+                                <div ng-if="values.img == ''">
+                                    <img src="http://placehold.it/250x175" width="50" height="50" >
+                                </div> 
+                                </td>
+                                <td>{{values.name}}</td>
+                                <td>{{values.valorvenda}}</td>
+                                <td>
+                                    <div class="form-group mb-2">
+                                        <input class="form-control form-control-line" type="text" name="subject" placeholder="Digite o valor">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-ic-cmp">
+                                        <button class="btn btn-pink btn-rounded" ng-click="adicionarProduto()">Adicionar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>                  

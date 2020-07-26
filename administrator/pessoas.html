@@ -1,0 +1,138 @@
+<div class="form-example-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-example-wrap mg-t-30">
+                        <div class="cmp-tb-hd cmp-int-hd">
+                            <h2>Pessoas</h2>
+                        </div>
+                        <div class="form-example-int form-horizental">
+                            
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="hrzn-fm">Obrigatórios</label>
+                                </div>
+                                <div class="col-lg-6 col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <label >Nome</label> 
+                                            <input ng-model="PessoaNome" type="text" class="form-control input-sm">
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">    
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <label >Cpf</label>    
+                                            <input type="text" ng-model="pessoaCPF"   class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-example-int form-horizental">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <label class="hrzn-fm">Complementares</label>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <label >RG</label>    
+                                            <input type="text" ng-model="pessoaRG" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <label >Endereço</label>    
+                                            <input type="text" ng-model="pessoaEndereco" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <label >Número</label>    
+                                            <input type="text" ng-model="pessoaNumero" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="form-group">
+                                        <div class="nk-int-st">
+                                            <label >Bairro</label>    
+                                            <input type="text" ng-model="pessoaBairro"   class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                       
+                        
+                        <div class="form-example-int mg-t-15">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                </div>
+                                <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                    <button class="btn btn-default notika-btn-default" ng-click="clearCode()">Novo</button>
+                                    <button class="btn btn-success notika-btn-success" ng-click="savedata()" type="submit" >Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="normal-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="normal-table-list mg-t-30">
+                        <div class="basic-tb-hd">
+                            <h2>Produtos Cadastrados</h2>
+                        </div>
+                        <div class="bsc-tbl-hvr">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>RG</th>
+                                        <th>Endereço</th>
+                                        <th>Número</th>
+                                        <th>Bairro</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="values in product">
+                                        <td>{{values.id}}</td>
+                                        <td>{{values.name}}</td>
+                                        <td>{{values.codbar}}</td>
+                                        <td>{{values.valorvenda}}</td>
+                                        <td>{{values.qtd}}</td>
+                                        <td>
+                                            <div class="form-ic-cmp">
+                                                <a href=""><i ng-click="edit(values.id,values.name,values.codbar,values.valorvenda,values.qtd)" class="notika-icon notika-edit"></i></a>
+                                            </div>
+                                            </td>
+                                        <td>
+                                            <div class="form-ic-cmp">
+                                                <a href=""><i ng-click="delete(values.id)" class="notika-icon notika-cloud"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

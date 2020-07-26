@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="app" ng-controller="todo" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0 user-scalable=no">
+    <title>Kipedido</title>
+    <!-- GLOBAL MAINLY STYLES-->
+    <link href="./html/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/line-awesome/css/line-awesome.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/animate.css/animate.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
+    <!-- PLUGINS STYLES-->
+    <link href="./html/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+    <!-- THEME STYLES-->
+    <link href="./html/assets/css/main.min.css" rel="stylesheet" />
+    <!-- PAGE LEVEL STYLES-->
+    <!-- my aplications-->
+		<script type="text/javascript" src="../../assets/modules/angular/angular.min.js"></script>
+		<script type="text/javascript" src="../../assets/modules/angular/angular-cookies.min.js"></script>
+		
+		<script type="text/javascript" src="../controller/todo.js" ></script>
+		<script type="text/javascript" src="../controller/service/configurationService.js" ></script>
+		<script type="text/javascript" src="../controller/service/crudService.js" ></script>
+		<script type="text/javascript" src="../controller/service/loginService.js" ></script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        <header class="header"style="background-color:#7536e6;">
+            <!-- START TOP-LEFT TOOLBAR-->
+            <ul class="nav navbar-toolbar">
+                <li>
+                    <a class="nav-link sidebar-toggler js-sidebar-toggler" href="javascript:;">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                </li>
+                
+            </ul>
+            <!-- END TOP-LEFT TOOLBAR-->
+            <!--LOGO-->
+            <div class="media-heading" style="color:white;">Kipedido</div>
+            <!-- START TOP-RIGHT TOOLBAR-->
+            <ul class="nav navbar-toolbar">
+                <li class="dropdown dropdown-notification">
+                    <a class="nav-link toolbar-icon"  href="carrinho.html"><i class="ti-shopping-cart font-16 v-middle"></i>
+                        <span class="envelope-badge">{{itensCarrinho}}</span>
+                    </a>
+                </li>
+                <li class="dropdown dropdown-notification">
+                    <a class="nav-link dropdown-toggle toolbar-icon" href="#"><i class="ti-bell rel"></i>
+                        <span class="envelope-badge">7</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- END TOP-RIGHT TOOLBAR-->
+        </header>
+        <!-- END HEADER-->
+
+        <!-- START SIDEBAR-->
+        <nav class="page-sidebar">
+            <ul class="side-menu metismenu scroller">
+                <li class="heading">Opções</li>
+                <li>
+                    <a href="index.html"><i class="sidebar-item-icon ti-home"></i>
+                        <span class="nav-label">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="produtos.html"><i class="sidebar-item-icon ti-gift"></i>
+                        <span class="nav-label">Produtos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="carrinho.html"><i class="sidebar-item-icon ti-shopping-cart"></i>
+                        <span class="nav-label">Carrinho</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ofertas.html"><i class="sidebar-item-icon ti-heart"></i>
+                        <span class="nav-label">Ofertas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="histórico.html"><i class="sidebar-item-icon ti-anchor"></i>
+                        <span class="nav-label">Histórico</span>
+                    </a>
+                </li>
+                <li class="heading">Pessoal</li>
+                <li>
+                    <a href="perfil.html"><i class="sidebar-item-icon ti-user"></i>
+                        <span class="nav-label">Perfil</span>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="configuracoes.html"><i class="sidebar-item-icon ti-pencil"></i>
+                        <span class="nav-label">Configurações</span>
+                    </a>
+                </li>-->
+                <li>
+                    <a href="endereco.html"><i class="sidebar-item-icon ti-search"></i>
+                        <span class="nav-label">Endereço</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" ng-click="sair()"> <i class="sidebar-item-icon ti-cloud-down"></i>
+                        <span class="nav-label">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>        
+        
+        <div class="content-wrapper" style="margin-left:-10px; margin-right:-10px;">  
+            <div class="ibox">
+                <div class="ibox-head">
+                    <div class="ibox-title">Dados Pessoais</div>
+                </div>
+                <div class="ibox-body">
+                    <div class="form-group mb-12">
+                        <label class="col-form-label">Nome</label>
+                        <input class="form-control form-control-line" ng-model="dadosUsuario[0].nome" type="text" placeholder="Nome">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="col-form-label">Sobrenome</label>
+                        <input class="form-control form-control-line" ng-model="dadosUsuario[0].sobrenome" type="text" placeholder="Sobrenome">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="col-form-label">Telefone</label>
+                        <input class="form-control form-control-line"  ng-model="dadosUsuario[0].telefone" type="text" placeholder="Telefone">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="col-form-label">Telefone Complementar</label>
+                        <input class="form-control form-control-line"  ng-model="dadosUsuario[0].telefone2" type="text" placeholder="Telefone Complementar">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="fixed-bottom" style="background-color: white; z-index: 1;">
+            <div class="ibox-body">
+                <ul class="nav nav-tabs tabs-line tabs-line-2x nav-fill">
+                    <li class="nav-item">
+                        <a ng-Click="salvarDadosDoUsuario()"  class="btn btn-outline-pink btn-block" aria-expanded="true"></i>Salvar</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+        </footer>
+        
+    </div>
+
+    <!-- START SEARCH PANEL-->
+    <div class="sidenav-backdrop backdrop"></div>
+    <div class="preloader-backdrop">
+        <div class="page-preloader">Carregando</div>
+    </div>
+    
+    <!-- CORE PLUGINS-->
+    <script src="./html/assets/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="./html/assets/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./html/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./html/assets/vendors/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="./html/assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="./html/assets/vendors/jquery-idletimer/dist/idle-timer.min.js"></script>
+    <script src="./html/assets/vendors/toastr/toastr.min.js"></script>
+    <script src="./html/assets/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="./html/assets/vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <!-- PAGE LEVEL PLUGINS-->
+    <script src="./html/assets/vendors/chart.js/dist/Chart.min.js"></script>
+    <script src="./html/assets/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <script src="./html/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="./html/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- CORE SCRIPTS-->
+    <script src="./html/assets/js/app.min.js"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+    <script src="./html/assets/js/scripts/dashboard_ecommerce.js"></script>
+
+    <script src="octopus/assets/javascripts/ui-elements/examples.modals.js"></script>
+</body>
+
+</html>

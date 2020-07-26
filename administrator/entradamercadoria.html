@@ -1,0 +1,118 @@
+<div class="ibox mb-2">
+    <form name="form">
+        <div class="ibox-head">
+            <div class="ibox-title">Entrada de Mercadoria</div>
+                <div class="ibox-tools">
+                    <!--<button class="btn btn-secondary" ng-click="clearCode()" >Novo</button>-->
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#new-mail-modal" href="javascript:;" >Adicionar Entrada</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="ibox">
+    <div class="row">  
+        <div class="col-xl-12">
+            <div class="ibox-body">
+                <div class="tab-content">
+                    <table class="table table-head mb-12">  
+                        <thead>
+                            <tr>
+                                <th>imágem</th>
+                                <th>Id do Lançamento</th>
+                                <th>Id Produto</th>
+                                <th>Descrição</th>
+                                <th>Quantidade Adicionada</th>
+                                <th>Data de Movimentação</th>
+                                <th>Deletar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="values in entradaMercadoria">
+                                <td>
+                                    <div ng-if="values.img != ''">
+                                        <img src="http://blog-kipedido-com.umbler.net/public/{{values.img}}" width="50" height="50" >
+                                    </div>
+                                    <div ng-if="values.img == ''">
+                                        <img src="http://placehold.it/250x175" width="50" height="50" >
+                                    </div> 
+                                </td>
+                                <td>{{values.id}}</td>
+                                <td>{{values.idproduto}}</td>
+                                <td>{{values.name}}</td>
+                                <td>{{values.qtdproduto}}</td>
+                                <td>{{values.data}}</td>
+                                <td>
+                                    <div class="form-ic-cmp">
+                                        <a class="text-muted font-16" href="javascript:;" ng-click="delete(values.id)"><i class="ti-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+
+<div class="modal fade " id="new-mail-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <form class="modal-content">
+            <div class="modal-header p-6">
+                <h5 class="modal-title">Selecionar Produtos</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            
+            
+            <div class="modal-body p-6">
+                <div class="form-group">    
+                        <div class="input-group-icon input-group-icon-left">
+                            <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
+                            <input class="form-control form-control-rounded" id="key-search" type="text" ng-model="buscarmodal" placeholder="Buscar Produtos ...">
+                        </div>
+                    </div>
+                <div class="form-group mb-6">
+                    <table class="table table-head mb-5">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>imágem</th>
+                                <th>Código de Barras</th>
+                                <th>Produto</th>
+                                <th>Quantidade à adicionar</th>
+                                <th>Adicionar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="values in product | filter:buscarmodal">
+                                <td>{{values.id}}</td>
+                                <td>
+                                    <div ng-if="values.img != ''">
+                                        <img src="http://blog-kipedido-com.umbler.net/public/{{values.img}}" width="50" height="50" >
+                                    </div>
+                                    <div ng-if="values.img == ''">
+                                        <img src="http://placehold.it/250x175" width="50" height="50" >
+                                    </div> 
+                                </td>
+                                <td>{{values.codbar}}</td>
+                                <td>{{values.name}}</td>
+                                <td>
+                                    <div class="form-group mb-2">
+                                        <input class="form-control form-control-line" type="text" ng-model="quantidade" name="subject" placeholder="Digite a quantidade">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-ic-cmp">
+                                        <button class="btn btn-pink btn-rounded" ng-click="operationSave(values.id,quantidade)">Adicionar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>                  
