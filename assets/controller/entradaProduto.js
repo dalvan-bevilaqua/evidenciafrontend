@@ -56,14 +56,17 @@ app.controller("entradaProduto", ['$scope', '$http', 'Crud', 'Login', 'Upload', 
         $scope.pagamento = [];
     };
 
-    $scope.inserirItemNaEntrada = function (codigoProduto, codigoBarras, nome, valor, valorVendido) {
+    $scope.inserirItemNaEntrada = function (codigoProduto, codigoBarras, nome, valor, valorVendido, quantidade) {
 
         if (valorVendido) {
             valor = valorVendido;
         }
+        if (!quantidade) {
+            quantidade = 1;
+        }
 
         $scope.list.push({
-            codigoProduto: codigoProduto, nome: nome, codigoBarras: codigoBarras, valor: valor
+            codigoProduto: codigoProduto, nome: nome, codigoBarras: codigoBarras, valor: valor, quantidade: quantidade
         });
 
         Crud.save('entradaproduto', $scope.list, function (res) {

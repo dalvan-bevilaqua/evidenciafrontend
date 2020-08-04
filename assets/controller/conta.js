@@ -18,57 +18,42 @@ app.controller("contaController", ['$scope', '$http', 'Crud', 'Login', 'Upload',
     $scope.idMovimento = 0;
     $scope.produtosVenda = [];
     $scope.totalCompra = 0;
+    $scope.observacao = "";
 
     $scope.getAllConta = function () {
-        Crud.getAll("getAllConta", function (res) {
+        Crud.getAll("caixa", function (res) {
             $scope.conta = res;
-            angular.forEach($scope.conta, function (valueConta, keyProd) {
-                if (valueConta.tipo == 'C') {
-                    $scope.valorDisponivel = $scope.valorDisponivel + valueConta.valor
-                }
-                if (valueConta.tipo == 'D') {
-                    $scope.valorDisponivel = $scope.valorDisponivel - valueConta.valor
-                }
-
-            })
+            $scope.valorDisponivel = res.totalSaldo
         })
     }
+
     $scope.getProducstVenda = function (id, valor) {
-        Crud.getById("getProdutoVendaByMovimento/" + id, function (res) {
+        Crud.getById("vendaproduto/codigovenda/" + id, function (res) {
             $scope.produtosVenda = res;
         })
         $scope.totalCompra = valor;
     }
 
+    $scope.delete = function (codigo) {
+        Crud.deleteByid("caixa/" + codigo, function (res) {
+            $scope.clear()
+            $scope.getAllConta();
+        })
+    }
 
-    $scope.delete = function (id) {
-        Crud.deleteByid("deleteContaById/" + id, function (res) {
-            $scope.clear()
-            $scope.getAllConta();
-        })
-    }
-    $scope.operationSave = function () {
-        $scope.list.push({ data: $scope.data, idmovimento: $scope.idMovimento, tipo: 'D', valor: $scope.valorSaque, iduser: '0' });
-        Crud.save('saveConta', $scope.list, function (res) {
-            $scope.clear()
-            $scope.getAllConta();
-        })
-    }
     $scope.clear = function () {
         $scope.valorDisponivel = 0;
         $scope.valorSaque = 0;
         $scope.list = [];
+        $scope.observacao = "";
     }
-    $scope.edit = function (id, prodDesc, prodBarCode, prodValor, prodQtd, img) {
-        $scope.id = id;
-        $scope.prodDesc = prodDesc;
-        $scope.prodBarCode = prodBarCode;
-        $scope.prodValor = prodValor;
-        $scope.prodQtd = prodQtd;
-        $scope.img = img
-    }
-    $scope.salvarSaque = function () {
-        $scope.operationSave();
+
+    $scope.salvarSaque = function (valorSaque, observacao) {
+        $scope.list.push({ valorSaida: valorSaque, descricao: observacao });
+        Crud.save('caixa', $scope.list, function (res) {
+            $scope.clear()
+            $scope.getAllConta();
+        })
     }
 
     $scope.getAllConta();

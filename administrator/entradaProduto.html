@@ -19,6 +19,7 @@
                             <tr>
                                 <th>Id do Lançamento</th>
                                 <th>codigo Produto</th>
+                                <th>Quantidade</th>
                                 <th>Codigo Barras</th>
                                 <th>Nome</th>
                                 <th>Valor</th>
@@ -29,6 +30,7 @@
                             <tr ng-repeat="values in entradaProduto">
                                 <td>{{values.codigo}}</td>
                                 <td>{{values.codigoProduto}}</td>
+                                <td>{{values.quantidade}}</td>
                                 <td>{{values.codigoBarras}}</td>
                                 <td>{{values.nome}}</td>
                                 <td>{{values.valor}}</td>
@@ -71,6 +73,7 @@
                                 <th>codigo</th>
                                 <th>Código de Barras</th>
                                 <th>Nome</th>
+                                <th>quantidade</th>
                                 <th>valor</th>
                                 <th>alterar valor</th>
                                 <th>adicionar</th>
@@ -81,6 +84,11 @@
                                 <td>{{values.codigo}}</td>
                                 <td>{{values.codigoBarras}}</td>
                                 <td>{{values.nome}}</td>
+                                <td>
+                                    <div class="form-group mb-2">
+                                        <input class="form-control form-control-line" type="text" ng-model="quantidade" name="subject" placeholder="Digite a quantidade">
+                                    </div>
+                                </td>
                                 <td>{{values.valor}}</td>
                                 <td>
                                     <div class="form-group mb-2">
@@ -91,7 +99,7 @@
                                     <div class="form-ic-cmp">
                                         <button class="btn btn-pink btn-rounded" ng-click="
                                             inserirItemNaEntrada(values.codigo, values.codigoBarras, 
-                                            values.nome, values.valor, valorVendido)" data-dismiss="modal">Adicionar</button>
+                                            values.nome, values.valor, valorVendido, quantidade)" data-dismiss="modal">Adicionar</button>
                                     </div>
                                 </td>
                             </tr>

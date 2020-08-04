@@ -2,82 +2,82 @@
     <form name="form">
         <div class="ibox-head">
             <div class="ibox-title">Movimentações da Conta</div>
-                
-            </div>
-            <div class="ibox-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-sm-3 form-group mb-2">
-                                <label>Total Dispovível para Saque</label>
-                                <input class="form-control"  ng-model="valorDisponivel" type="text" disabled>
+
+        </div>
+        <div class="ibox-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-sm-3 form-group mb-2">
+                            <label>Total Dispovível para Saque</label>
+                            <input class="form-control" ng-model="valorDisponivel" type="text" disabled>
+                        </div>
+                        <div class="col-sm-3 form-group mb-2">
+                            <label>Valor do Saque</label>
+                            <input class="form-control" ng-model="valorSaque" type="text" placeholder="0.00">
+                        </div>
+                        <div class="col-sm-3 form-group mb-2">
+                            <label>Observação</label>
+                            <input class="form-control" ng-model="observacao" type="text" placeholder="">
+                        </div>
+                        <div class="col-sm-2 form-group mb-2">
+                            <label>Operação</label>
+                            <div ng-if="valorDisponivel == 0 || valorSaque == 0 || valorSaque > valorDisponivel">
+                                <button class="form-control btn btn-primary mr-2" type="submit" ng-click="salvarSaque()"
+                                    disabled>Sacar Valor</button>
                             </div>
-                            <div class="col-sm-3 form-group mb-2">
-                                <label>Valor do Saque</label>
-                                <input class="form-control"  ng-model="valorSaque" type="text" placeholder="0.00">
-                            </div>
-                            <div class="col-sm-2 form-group mb-2">
-                                <label>Operação</label>
-                                <div ng-if="valorDisponivel == 0 || valorSaque == 0 || valorSaque > valorDisponivel">
-                                    <button class="form-control btn btn-primary mr-2" type="submit" ng-click="salvarSaque()" disabled >Sacar Valor</button>
-                                </div>
-                                <div ng-if="valorDisponivel > 0 && valorSaque > 0 && valorSaque <= valorDisponivel"> 
-                                    <button class="form-control btn btn-primary mr-2" type="submit" ng-click="salvarSaque()" >Sacar Valor</button>
-                                </div>
+                            <div ng-if="valorDisponivel > 0 && valorSaque > 0 && valorSaque <= valorDisponivel">
+                                <button class="form-control btn btn-primary mr-2" type="submit"
+                                    ng-click="salvarSaque(valorSaque, observacao)">Sacar Valor</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>     
-    </form>
+        </div>
+</div>
+</form>
 </div>
 
 <div class="ibox">
-    <div class="row">  
+    <div class="row">
         <div class="col-xl-12">
             <div class="ibox-body">
                 <table class="table table-bordered table-hover" id="orders-table">
                     <thead class="thead-default thead-lg">
                         <tr>
                             <th>Id</th>
-                            <th>Descrição</th>
-                            <th>Valor</th>
                             <th>Data</th>
-                            <th>Pagamento</th>
+                            <th>Descrição</th>
+                            <th>Valor Entrada</th>
+                            <th>Valor Saida</th>
                             <th>Detalhes</th>
                             <th>Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="values in conta | filter:search">
-                            <td>{{values.id}}</td>
-                            <td>
-                                <div ng-if="values.tipo == 'C'">Crédido em Conta / Venda de mercadoria</div>
-                                <div ng-if="values.tipo == 'D'">Débito em Conta / Saque de Valores</div>
-                            </td>
-                            <td>{{values.valor}}</td>
+                        <tr ng-repeat="values in conta.caixa | filter:search">
+                            <td>{{values.codigo}}</td>
                             <td>{{values.data}}</td>
+                            <td>{{values.descricao}}</td>
+                            <td>{{values.valorEntrada}}</td>
+                            <td>{{values.valorSaida}}</td>
                             <td>
-                                <div ng-if="values.pagamento == 'C' ">
-                                   Cartão / Prazo - Sujeito a alteração de valores entre valor a vista e valor a prazo
-                                </div>
-                                <div ng-if="values.pagamento == 'D' ">
-                                    Dinheiro / A vista
+                                <div class="form-ic-cmp">
+                                    <a class="text-muted font-16"
+                                        ng-click="getProducstVenda(values.codigoVenda, values.valorEntrada)"
+                                        data-toggle="modal" data-target="#new-mail-modal" href="javascript:;"> <i
+                                            class="ti-reload"></i></span></a>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-ic-cmp">
-                                    <a class="text-muted font-16" ng-click="getProducstVenda(values.idmovimento, values.valor)" data-toggle="modal" data-target="#new-mail-modal" href="javascript:;"  > <i class="ti-reload"></i></span></a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-ic-cmp">
-                                    <div ng-if="values.tipo == 'D'">
-                                        <a class="text-muted font-16" href="javascript:;" ng-click="delete(values.id)"><i class="ti-trash"></i></a>
+                                    <div ng-if="values.valorSaida != undefined ">
+                                        <a class="text-muted font-16" ng-click="delete(values.codigo)"><i
+                                                class="ti-trash"></i></a>
                                     </div>
-                                    <div ng-if="values.tipo == 'C'">
-                                        Não deleta venda
+                                    <div ng-if="values.valorEntrada != undefined">
+                                        Operação não permitida para venda
                                     </div>
                                 </div>
                             </td>
@@ -85,7 +85,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>    
+        </div>
     </div>
 </div>
 
@@ -98,50 +98,42 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            
-            
+
+
             <div class="modal-body p-6">
-                <div class="form-group">    
-                        <div class="input-group-icon input-group-icon-left">
-                            <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
-                            <input class="form-control form-control-rounded" id="key-search" type="text" ng-model="buscarmodal" placeholder="Buscar Produtos ...">
-                        </div>
+                <div class="form-group">
+                    <div class="input-group-icon input-group-icon-left">
+                        <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
+                        <input class="form-control form-control-rounded" id="key-search" type="text"
+                            ng-model="buscarmodal" placeholder="Buscar Produtos ...">
                     </div>
+                </div>
                 <div class="form-group mb-6">
                     <table class="table table-head mb-5">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>id Produto</th>
-                                <th>imágem</th>
+                                <th>codigo</th>
+                                <th>codigo Barras</th>
                                 <th>Descrição</th>
-                                <th>Valor a Vista</th>
-                                <th>Valor a Prazo</th>
+                                <th>Valor produto</th>
+                                <th>Valor Vendido</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="values in produtosVenda | filter:buscarmodal">
-                                <td>{{values.id}}</td>
-                                <td>{{values.idproduto}}</td>
-                                <td>
-                                    <div ng-if="values.img != ''">
-                                        <img src="http://blog-kipedido-com.umbler.net/public/{{values.img}}" width="50" height="50" >
-                                    </div>
-                                    <div ng-if="values.img == ''">
-                                        <img src="http://placehold.it/250x175" width="50" height="50" >
-                                    </div> 
-                                </td>
-                                <td>{{values.name}}</td>
+                                <td>{{values.codigo}}</td>
+                                <td>{{values.codigoBarras}}</td>
+                                <td>{{values.nome}}</td>
                                 <td>{{values.valor}}</td>
-                                <td>{{values.valorprazo}}</td>
+                                <td>{{values.valorVendido}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Valor da Movimentação: {{totalCompra}}</button>
-              </div>
+                <button class="btn btn-primary">Valor da Movimentação: {{totalCompra}}</button>
+            </div>
         </form>
     </div>
-</div>  
+</div>

@@ -1,0 +1,92 @@
+<div class="ibox mb-2">
+    <div class="ibox-head">
+        <div class="ibox-title">Relatório de Vendas</div>
+
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="ibox-body">
+                <table class="table table-bordered table-hover" id="orders-table">
+                    <thead class="thead-default thead-lg">
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Data</th>
+                            <th>FormaPagamento</th>
+                            <th>Valor</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="venda in vendas | filter:search">
+                            <td>{{venda.codigo}}</td>
+                            <td>{{venda.data}}</td>
+                            <td>{{venda.formaPagamento}}</td>
+                            <td>{{venda.valorVenda}}</td>
+                            <td>
+                                <div class="form-ic-cmp">
+                                    <a class="text-muted font-16"
+                                        ng-click="getProducstVenda(venda.codigo, venda.valorVenda)" data-toggle="modal"
+                                        data-target="#new-mail-modal" href="javascript:;"> <i
+                                            class="ti-reload"></i></span></a>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade " id="new-mail-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <form class="modal-content">
+            <div class="modal-header p-6">
+                <h5 class="modal-title">Produtos da Venda</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body p-6">
+                <div class="form-group">
+                    <div class="input-group-icon input-group-icon-left">
+                        <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
+                        <input class="form-control form-control-rounded" id="key-search" type="text"
+                            ng-model="buscarmodal" placeholder="Buscar Produtos ...">
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <table class="table table-head mb-5">
+                        <thead>
+                            <tr>
+                                <th>codigo</th>
+                                <th>codigo Barras</th>
+                                <th>Descrição</th>
+                                <th>Valor produto</th>
+                                <th>Valor Vendido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="values in produtosVenda | filter:buscarmodal">
+                                <td>{{values.codigo}}</td>
+                                <td>{{values.codigoBarras}}</td>
+                                <td>{{values.nome}}</td>
+                                <td>{{values.valor}}</td>
+                                <td>{{values.valorVendido}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Valor da Movimentação: {{valorVenda}}</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -61,6 +61,8 @@ app.controller("companyController", ['$scope', '$http', 'Crud', 'Login', 'Upload
             })
         }
 
+        $scope.list = [];
+
     }
 
     $scope.getAllProduct();
