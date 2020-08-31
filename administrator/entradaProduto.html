@@ -2,19 +2,21 @@
     <form name="form">
         <div class="ibox-head">
             <div class="ibox-title">Entrada de Produto</div>
-                <div class="ibox-tools">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#new-mail-modal" ng-click=(getAllProduct()) href="javascript:;" >Adicionar Item</button>
-                    <button class="btn btn-warning" ng-click=(finalizarEntrada()) >Finalizar Entrada</button>
+            <div class="ibox-tools">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#new-mail-modal"
+                    ng-click=(getAllProduct()) href="javascript:;">Adicionar Item</button>
+                <button class="btn btn-warning" ng-click=(finalizarEntrada())>Finalizar Entrada</button>
             </div>
         </div>
-    </form>
+</div>
+</form>
 </div>
 <div class="ibox">
-    <div class="row">  
+    <div class="row">
         <div class="col-xl-12">
             <div class="ibox-body">
                 <div class="tab-content">
-                    <table class="table table-head mb-12">  
+                    <table class="table table-head mb-12">
                         <thead>
                             <tr>
                                 <th>Id do Lançamento</th>
@@ -36,7 +38,8 @@
                                 <td>{{values.valor}}</td>
                                 <td>
                                     <div class="form-ic-cmp">
-                                        <a class="text-muted font-16" href="javascript:;" ng-click="delete(values.codigo)"><i class="ti-trash"></i></a>
+                                        <a class="text-muted font-16" href="javascript:;"
+                                            ng-click="delete(values.codigo)"><i class="ti-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -44,7 +47,7 @@
                     </table>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 </div>
 
@@ -57,15 +60,16 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            
-            
+
+
             <div class="modal-body p-6">
-                <div class="form-group">    
-                        <div class="input-group-icon input-group-icon-left">
-                            <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
-                            <input class="form-control form-control-rounded" id="key-search" type="text" ng-model="buscarmodal" placeholder="Buscar Produtos ...">
-                        </div>
+                <div class="form-group">
+                    <div class="input-group-icon input-group-icon-left">
+                        <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
+                        <input class="form-control form-control-rounded" id="key-search" type="text"
+                            ng-model="buscarmodal" placeholder="Buscar Produtos ...">
                     </div>
+                </div>
                 <div class="form-group mb-6">
                     <table class="table table-head mb-5">
                         <thead>
@@ -86,20 +90,23 @@
                                 <td>{{values.nome}}</td>
                                 <td>
                                     <div class="form-group mb-2">
-                                        <input class="form-control form-control-line" type="text" ng-model="quantidade" name="subject" placeholder="Digite a quantidade">
+                                        <input class="form-control form-control-line" type="text" ng-model="quantidade"
+                                            name="subject" placeholder="Digite a quantidade">
                                     </div>
                                 </td>
                                 <td>{{values.valor}}</td>
                                 <td>
                                     <div class="form-group mb-2">
-                                        <input class="form-control form-control-line" type="text" ng-model="valorVendido" name="subject" placeholder="Digite o valor">
+                                        <input class="form-control form-control-line" type="text"
+                                            ng-model="valorVendido" name="subject" placeholder="Digite o valor">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-ic-cmp">
                                         <button class="btn btn-pink btn-rounded" ng-click="
                                             inserirItemNaEntrada(values.codigo, values.codigoBarras, 
-                                            values.nome, values.valor, valorVendido, quantidade)" data-dismiss="modal">Adicionar</button>
+                                            values.nome, values.valor, valorVendido, quantidade)"
+                                            data-dismiss="modal">Adicionar</button>
                                     </div>
                                 </td>
                             </tr>
@@ -109,4 +116,4 @@
             </div>
         </form>
     </div>
-</div>                  
+</div>

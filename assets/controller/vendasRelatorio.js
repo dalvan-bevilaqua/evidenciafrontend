@@ -27,5 +27,9 @@ app.controller("vendasRelatorio", ['$scope', '$http', 'Crud', 'Upload', function
         $scope.valorVenda = valor;
     }
 
+    $scope.imprimirRelatorio = function () {
+        Crud.relatorio("venda/relatorioVendas");
+    }
+
     $scope.getAllVendas();
 }])

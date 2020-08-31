@@ -1,0 +1,41 @@
+<div class="ibox mb-2">
+    <div class="ibox-head">
+        <div class="ibox-title">Relatório de Estoque</div>
+        <div class="ibox-tools">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#new-mail-modal" ng-click=(buscar())
+                href="javascript:;">Buscar</button>
+            <button class="btn btn-warning" ng-click=(imprimirRelatorio())>Imprimir Relatório</button>
+        </div>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="ibox-body">
+                <table class="table table-bordered table-hover" id="orders-table">
+                    <thead class="thead-default thead-lg">
+                        <tr>
+                            <th>Código</th>
+                            <th>Código de barras</th>
+                            <th>Descrição</th>
+                            <th>Quantidade Vendida</th>
+                            <th>Quantidade Entrada</th>
+                            <th>Total Estoque</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="estoque in estoque | filter:search">
+                            <td>{{estoque.codigo}}</td>
+                            <td>{{estoque.codigoBarras}}</td>
+                            <td>{{estoque.nome}}</td>
+                            <td>{{estoque.quantidadeVendida}}</td>
+                            <td>{{estoque.quantidadeEntrada}}</td>
+                            <td>{{estoque.quantidadeEstoque}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

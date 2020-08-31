@@ -6,6 +6,10 @@ app.service('Crud', function (Configuration, $http, $cookies, Upload) {
 
     var token = $cookies.get('token');
 
+    this.relatorio = function ($operation) {
+        window.open(route + $operation);
+    }
+
     this.getAll = function ($operation, callback) {
         $http.get(route + $operation, {})
             .then(function (response) {
