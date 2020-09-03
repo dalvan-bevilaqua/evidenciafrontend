@@ -1,9 +1,14 @@
 <div class="ibox mb-2">
     <div class="ibox-head">
         <div class="ibox-title">Relatório de Vendas</div>
-        <div class="ibox-tools">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#new-mail-modal" ng-click=(buscar())
-                href="javascript:;">Buscar</button>
+        <div style="width: 400px; margin-left: 50%;">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input class="form-control" id="daterange_2" type="text">
+            </div>
+        </div>
+        <div class="ibox-body">
+            <button class="btn btn-primary" type="submit" ng-click=(buscar())>Buscar</button>
             <button class="btn btn-warning" ng-click=(imprimirRelatorio())>Imprimir Relatório</button>
         </div>
     </div>

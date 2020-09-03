@@ -16,6 +16,19 @@
     <link href="./html/assets/vendors/toastr/toastr.min.css" rel="stylesheet" />
     <link href="./html/assets/vendors/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" />
 
+    <link href="./html/assets/vendors/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet" />
+    <link href="./html/assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/clockpicker/dist/bootstrap-clockpicker.min.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/jquery-minicolors/jquery.minicolors.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/multiselect/css/multi-select.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="./html/assets/vendors/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
     <link href="./html/assets/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
     <link href="./html/assets/vendors/dropzone/dist/min/basic.min.css" rel="stylesheet" />
     <link href="./html/assets/vendors/dataTables/datatables.min.css" rel="stylesheet" />
@@ -171,6 +184,22 @@
     <script src="./html/assets/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
     <script src="./html/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
     <script src="./html/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <script src="./html/assets/vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="./html/assets/vendors/jquery-knob/dist/jquery.knob.min.js"></script>
+    <script src="./html/assets/vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    <script src="./html/assets/vendors/moment/min/moment.min.js"></script>
+    <script src="./html/assets/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="./html/assets/vendors/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./html/assets/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="./html/assets/vendors/clockpicker/dist/bootstrap-clockpicker.min.js"></script>
+    <script src="./html/assets/vendors/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="./html/assets/vendors/multiselect/js/jquery.multi-select.js"></script>
+    <script src="./html/assets/vendors/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="./html/assets/vendors/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
+    <script src="./html/assets/vendors/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+
     <!-- CORE SCRIPTS-->
     <script src="./html/assets/js/app.min.js"></script>
     <!-- PAGE LEVEL SCRIPTS-->
@@ -178,47 +207,9 @@
     <script src="./html/assets/vendors/dropzone/dist/min/dropzone.min.js"></script>
     <script src="./html/assets/vendors/dataTables/datatables.min.js"></script>
     <script src="./html/assets/vendors/jquery.maskedinput/dist/jquery.maskedinput.min.js"></script>
+    <script src="./html/assets/js/scripts/form-plugins.js"></script>
 
-    <script>
-        Dropzone.options.mydropzone = {
-            paramName: "file", // The name that will be used to transfer the file
-            maxFilesize: 5, // MB
-            dictDefaultMessage: '<div class="text-center mb-3"><i class="la la-cloud-upload text-primary" style="font-size:50px"></i></div> <strong>Drop files here or click to upload. </strong></br> (This is just a demo dropzone. Selected files are not actually uploaded.)',
-            init: function () {
-                this.on("addedfile", function (file) {
-                    var removeButton = Dropzone.createElement("<a href='javascript:;'' class='btn btn-danger btn-sm btn-block'>Remove</a>");
-                    var _this = this;
-                    removeButton.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        _this.removeFile(file);
-                    });
-                    file.previewElement.appendChild(removeButton);
-                });
-            }
-        }
-    </script>
-    <script>
-        $(function () {
-            $('#ex-date').mask('99/99/9999', {
-                placeholder: '00/00/0000'
-            });
-            $('#ex-phone').mask('(999) 999-9999');
-            $('#ex-phone2').mask('+186 999 999-9999');
-            $('#ex-ext').mask('(999) 999-9999? x9999');
-            $('#ex-credit').mask('****-****-****-****', {
-                placeholder: '*'
-            });
-            $('#ex-tax').mask('99-9999999');
-            $('#ex-currency').mask('$ 99.99');
-            $('#ex-product').mask('a*-999-a999', {
-                placeholder: 'a*-999-a999'
-            });
 
-            $.mask.definitions['~'] = '[+-]';
-            $('#ex-eye').mask('~9.99 ~9.99 999');
-        })
-    </script>
 </body>
 
-</html>
+</html>f
